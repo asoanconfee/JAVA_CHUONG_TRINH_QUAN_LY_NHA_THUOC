@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 5 elements from project &apos;QLBH&apos;&#x0D;&#x0A;- Original project: &apos;QLBH&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     icon.GoogleMaterialDesignIcons.java&#x0D;&#x0A;     icon.IconCode.java&#x0D;&#x0A;     icon.IconFont.java&#x0D;&#x0A;     icon.IconFontSwing.java&#x0D;&#x0A;     icon.ImageAvatar.java" description="Delete elements" element1="/src&lt;icon{IconFont.java" element2="/src&lt;icon{IconFontSwing.java" element3="/src&lt;icon{ImageAvatar.java" element4="/src&lt;icon{GoogleMaterialDesignIcons.java" element5="/src&lt;icon{IconCode.java" elements="5" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1699439291639" subPackages="false" version="1.0"/>
+</session>

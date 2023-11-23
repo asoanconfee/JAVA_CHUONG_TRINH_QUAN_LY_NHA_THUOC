@@ -1,0 +1,212 @@
+package gui;
+
+import dao.NhanVienDAO;
+import entity.NhanVien;
+import utils.Formats;
+import utils.MaterialDesign;
+import gui.DangNhap;
+import gui.ImagePanel;
+
+import javax.swing.*;
+import java.awt.*;
+import java.time.LocalTime;
+import java.util.Random;
+
+public class TrangChuTabbed extends JPanel {
+
+    private static final String PATH = "resources/images/";
+    private static final String IMAGES[] = {"logo01.jpg", "logo02.jpg", "logo03.jpg"};
+
+    private static NhanVienDAO nhanVienDAO;
+    private static NhanVien nhanVien;
+    private Random random = new Random();
+
+    private JLabel lblLoiChao, lblLoiChuc, lblMaNV_2, lblTenNguoiDung_2,
+            lblHoTen_2, lblGioiTinh_2, lblNgaySinh_2, lblCMND_2,
+            lblSoDienThoai_2, lblDiaChi_2, lblMoTa_2, lblTieuDeThongTin;
+    private JPanel headerPanel, leftPanel, rightPanel;
+    private ImagePanel imagePanel;
+
+    private void prepareUI() {
+        this.setLayout(new BorderLayout());
+        MaterialDesign.materialPanel(this);
+
+        prepareHeaderPanel();
+        prepareLeftPanel();
+        prepareRightPanel();
+
+        refresh();
+
+        int hour = LocalTime.now().getHour();
+        String greetingMessage = generateGreetingMessage(hour);
+        lblLoiChao.setText(greetingMessage);
+        imagePanel.setFilePath(generateImagePath());
+    }
+
+    private void prepareHeaderPanel() {
+        headerPanel = new JPanel();
+        headerPanel.setLayout(new BoxLayout(headerPanel, BoxLayout.X_AXIS));
+        MaterialDesign.materialPanel(headerPanel);
+        this.add(headerPanel, BorderLayout.NORTH);
+
+        JPanel innerHeaderPanel = new JPanel();
+        innerHeaderPanel.setLayout(new BoxLayout(innerHeaderPanel, BoxLayout.Y_AXIS));
+        MaterialDesign.materialPanel(innerHeaderPanel);
+        innerHeaderPanel.setBackground(MaterialDesign.COLOR_CARD);
+        headerPanel.add(Box.createHorizontalStrut(10));
+        headerPanel.add(innerHeaderPanel);
+        headerPanel.add(Box.createHorizontalStrut(10));
+
+        prepareGreetingBox(innerHeaderPanel);
+    }
+
+    private void prepareGreetingBox(JPanel panel) {
+        Box boxLoiChao = Box.createVerticalBox();
+        panel.add(boxLoiChao);
+
+        Box boxLoiChao1 = Box.createHorizontalBox();
+        boxLoiChao.add(Box.createVerticalStrut(50));
+        boxLoiChao.add(boxLoiChao1);
+
+        Box boxLoiChao2 = Box.createHorizontalBox();
+        boxLoiChao.add(Box.createVerticalStrut(20));
+        boxLoiChao.add(boxLoiChao2);
+        boxLoiChao.add(Box.createVerticalStrut(50));
+
+        String greeting = "Quản lý cho thuê băng đĩa";
+        lblLoiChuc = new JLabel(greeting, JLabel.LEFT);
+        MaterialDesign.materialLabel(lblLoiChuc);
+        lblLoiChuc.setFont(MaterialDesign.FONT_TITLE_1);
+        boxLoiChao1.add(Box.createHorizontalStrut(10));
+        boxLoiChao1.add(lblLoiChuc);
+
+        lblLoiChao = new JLabel();
+        lblLoiChao.setHorizontalAlignment(JLabel.LEFT);
+        MaterialDesign.materialLabel(lblLoiChao);
+        lblLoiChao.setFont(MaterialDesign.FONT_DEFAULT_ITALIC);
+
+        boxLoiChao2.add(Box.createHorizontalStrut(10));
+        boxLoiChao2.add(lblLoiChao);
+    }
+
+    private void prepareLeftPanel() {
+        leftPanel = new JPanel();
+        leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.X_AXIS));
+        MaterialDesign.materialPanel(leftPanel);
+        leftPanel.setBackground(MaterialDesign.COLOR_BACKGROUND);
+        leftPanel.setPreferredSize(new Dimension(700, 500));
+        leftPanel.setMaximumSize(new Dimension(700, 500));
+        this.add(leftPanel, BorderLayout.WEST);
+
+        JPanel innerLeftPanel = new JPanel();
+        innerLeftPanel.setLayout(new BoxLayout(innerLeftPanel, BoxLayout.Y_AXIS));
+        MaterialDesign.materialPanel(innerLeftPanel);
+        innerLeftPanel.setBackground(MaterialDesign.COLOR_CARD);
+        innerLeftPanel.setPreferredSize(new Dimension(700, 500));
+        innerLeftPanel.setMaximumSize(new Dimension(700, 500));
+        leftPanel.add(Box.createHorizontalStrut(10));
+        leftPanel.add(innerLeftPanel);
+        leftPanel.add(Box.createHorizontalStrut(10));
+
+        Box box = Box.createVerticalBox();
+        innerLeftPanel.add(Box.createVerticalStrut(10));
+        innerLeftPanel.add(box);
+        innerLeftPanel.add(Box.createVerticalStrut(10));
+
+        prepareInfoBox(box);
+    }
+
+    private void prepareInfoBox(Box box) {
+        Box boxTieuDe = Box.createHorizontalBox();
+        box.add(boxTieuDe);
+        box.add(Box.createVerticalStrut(20));
+
+        Box boxThongTin = Box.createVerticalBox();
+        box.add(boxThongTin);
+
+        prepareInfoRow(boxThongTin, "Thông tin nhân viên", lblTieuDeThongTin);
+        prepareInfoRow(boxThongTin, "Mã nhân viên:", lblMaNV_2);
+        prepareInfoRow(boxThongTin, "Tên người dùng: ", lblTenNguoiDung_2);
+        prepareInfoRow(boxThongTin, "Họ tên: ", lblHoTen_2);
+        prepareInfoRow(boxThongTin, "Giới tính: ", lblGioiTinh_2);
+        prepareInfoRow(boxThongTin, "Ngày sinh: ", lblNgaySinh_2);
+        prepareInfoRow(boxThongTin, "CMND: ", lblCMND_2);
+        prepareInfoRow(boxThongTin, "Số điện thoại: ", lblSoDienThoai_2);
+        prepareInfoRow(boxThongTin, "Địa chỉ: ", lblDiaChi_2);
+        prepareInfoRow(boxThongTin, "Mô tả: ", lblMoTa_2);
+    }
+
+    private void prepareInfoRow(Box parentBox, String label, JLabel valueLabel) {
+        Box rowBox = Box.createHorizontalBox();
+        parentBox.add(rowBox);
+
+        JLabel labelComponent = new JLabel(label);
+        MaterialDesign.materialLabel(labelComponent);
+        labelComponent.setPreferredSize(lblMaNV_2.getPreferredSize());
+        labelComponent.setMaximumSize(lblMaNV_2.getMinimumSize());
+        rowBox.add(Box.createHorizontalStrut(20));
+        rowBox.add(labelComponent);
+
+        rowBox.add(valueLabel);
+        rowBox.add(Box.createHorizontalGlue());
+    }
+
+    private void prepareRightPanel() {
+        rightPanel = new JPanel();
+        rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.X_AXIS));
+        MaterialDesign.materialPanel(rightPanel);
+        rightPanel.setBackground(MaterialDesign.COLOR_BACKGROUND);
+        this.add(rightPanel, BorderLayout.CENTER);
+
+        imagePanel = new ImagePanel(generateImagePath());
+        imagePanel.setPreferredSize(new Dimension(500, 500));
+        imagePanel.setMaximumSize(new Dimension(500, 500));
+        MaterialDesign.materialPanel(imagePanel);
+        imagePanel.setBackground(MaterialDesign.COLOR_BACKGROUND);
+        rightPanel.add(imagePanel);
+    }
+
+    private void refresh() {
+        try {
+            nhanVien = nhanVienDAO.getNhanVien(DangNhap.taiKhoan.getMaNhanVien());
+        } catch (Exception e) {
+            return;
+        }
+
+        lblMaNV_2.setText(nhanVien.getMaNhanVien());
+        lblTenNguoiDung_2.setText(DangNhap.taiKhoan.getTenTaiKhoan());
+        lblHoTen_2.setText(nhanVien.getHoTen());
+        lblGioiTinh_2.setText(nhanVien.isGioiTinh() ? "Nam" : "Nữ");
+        lblNgaySinh_2.setText(Formats.DATE_FORMAT.format(nhanVien.getNgaySinh()));
+        lblCMND_2.setText(nhanVien.getcMND());
+        lblSoDienThoai_2.setText(nhanVien.getSoDienThoai());
+        lblDiaChi_2.setText(nhanVien.getDiaChi());
+        lblMoTa_2.setText(nhanVien.getMoTa());
+    }
+
+    private String generateImagePath() {
+        return PATH + IMAGES[random.nextInt(IMAGES.length)];
+    }
+
+    private String generateGreetingMessage(int hour) {
+        if (hour >= 6 && hour <= 10) {
+            return "Chào buổi sáng " + nhanVien.getHoTen();
+        } else if (hour >= 11 && hour <= 12) {
+            return "Chào buổi trưa " + nhanVien.getHoTen();
+        } else if (hour >= 13 && hour <= 17) {
+            return "Chào buổi chiều " + nhanVien.getHoTen();
+        } else {
+            return "Chào buổi tối " + nhanVien.getHoTen();
+        }
+    }
+
+    public TrangChuTabbed() {
+        try {
+            nhanVienDAO = NhanVienDAO.getInstance();
+            nhanVien = nhanVienDAO.getNhanVien(DangNhap.taiKhoan.getMaNhanVien());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        prepareUI();
+    }
+}

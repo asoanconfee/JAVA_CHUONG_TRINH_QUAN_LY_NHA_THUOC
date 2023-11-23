@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="SmartImportWizard">
+		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
+		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
+		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="D:\UI RAVEN\Fashion-store-management-master"/>
+			<item value="D:\QLBH"/>
+			<item value="D:\UI RAVEN\XayDungPhanMem_ThueBangDia-master"/>
+			<item value="D:\DE_TAI_JAVA\XayDungPhanMem_ThueBangDia-master"/>
+			<item value="D:\DE_TAI_JAVA\NHOM7_QLBH_PTUD"/>
+			<item value="D:\DE_TAI_JAVA\QLKhachSan"/>
+			<item value="C:\RAR\QLBH\Nhom7_PTUD (1)\QLBH"/>
+			<item value="C:\RAR\QLBH"/>
+			<item value="C:\RAR\QLBH\QLBH"/>
+			<item value="D:\QLKhachSan"/>
+			<item value="D:\QuanLyKhoHangMayTinh-main"/>
+			<item value="D:\QuanLyKhoDienThoai-main"/>
+			<item value="D:\XayDungPhanMem_ThueBangDia-master"/>
+			<item value="D:\QuanLyBangDia-master"/>
+			<item value="D:\DE_TAI_JAVA\QuanLyBangDia-master"/>
+			<item value="D:\DE_TAI_JAVA\QLBH"/>
+			<item value="D:\DE_TAI_JAVA\Nhom7_PTUD\QLBH"/>
+			<item value="D:\DE_TAI_JAVA\Nhom7_PTUD"/>
+			<item value="D:\DE_TAI_JAVA\Nhom05_DeTai01_LTHSK_QLThuoc"/>
+			<item value="D:\PhatTrienUngDung_Swing_QuanLyQuayThuoc"/>
+			<item value="D:\QuanLyNhaThuoc-main"/>
+			<item value="D:\QuanLyLaoDong_version3"/>
+			<item value="D:\QUAN_LY_NHA_THUOC"/>
+			<item value="D:\DE_TAI_QUAN_LY_THUOC"/>
+			<item value="D:\Nhom01_QuanLyCuaHangMuaBanLinhKien\Nhom01_QuanLyMuaBanLinhKien_PTUD"/>
+		</list>
+	</section>
+	<section name="NewWizardAction">
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="534"/>
+		<item key="DIALOG_Y_ORIGIN" value="239"/>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
+	</section>
+</section>
