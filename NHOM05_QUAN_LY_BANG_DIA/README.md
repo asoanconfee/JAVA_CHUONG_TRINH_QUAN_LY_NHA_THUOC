@@ -2,9 +2,9 @@
 Bài tập lớn Lập trình hướng sự kiện với Công nghệ Java
 
 ## Thành viên nhóm:
-1. Nguyễn Thảo Uyên (Nhóm trưởng) - 20072171
-2. Lê Minh Thư - 21025781
-3. Nguyễn Phú Sang - 21023391
+1. Nguyễn Thảo Uyên
+2. Lê Minh Thư
+3. Nguyễn Phú Sang
 
 ## Đề bài
 
